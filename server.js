@@ -8,23 +8,27 @@ var port = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: false,
   })
 );
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", function(req, resp) {
+app.get("/", function (req, resp) {
   resp.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.get("/r", function(req, resp) {
+app.get("/r", function (req, resp) {
   resp.sendFile(path.join(__dirname, "public", "recruiter.html"));
 });
 
-app.get("/c", function(req, resp) {
+app.get("/c", function (req, resp) {
   resp.sendFile(path.join(__dirname, "public", "college.html"));
 });
 
-app.listen(port, function() {
+app.get("/privacy", function (req, resp) {
+  resp.sendFile(path.join(__dirname, "public", "privacy.html"));
+});
+
+app.listen(port, function () {
   console.log(`Server started at ${port}`);
 });
